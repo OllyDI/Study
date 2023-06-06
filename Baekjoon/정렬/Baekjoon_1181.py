@@ -1,0 +1,5 @@
+n = int(input())
+arr = set()
+for i in range(n): arr.add(input())
+arr = sorted(sorted(arr), key=len)
+for i in arr: print(i)
