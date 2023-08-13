@@ -14,7 +14,7 @@ input = sys.stdin.readline
 s = ["(", "[", ")", "]"]
 
 def func(str):
-    stack = []      # 스택의 FIFO를 이용
+    stack = []      # 스택의 LIFO를 이용
     check = "true"
 
     for chr in str:
