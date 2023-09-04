@@ -32,6 +32,8 @@ def dfs(cnt) :
                 if lst[cnt] == lst[j] or abs(lst[cnt] - lst[j]) == cnt - j:
                     b = False
                     break           
+
+                
             if b: dfs(cnt + 1)
 
 n = int(input())
