@@ -63,6 +63,7 @@ a 7 10
 1
 """
 
+# 50점
 # import sys
 # input = sys.stdin.readline
 
@@ -78,6 +79,7 @@ a 7 10
 #     print(cnt[int(r) + 1] - cnt[int(l)])
 
 
+# 100점
 import sys
 input = sys.stdin. readline
 
