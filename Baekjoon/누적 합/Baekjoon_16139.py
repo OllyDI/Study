@@ -78,7 +78,7 @@ a 7 10
 #         else: cnt.append(cnt[i])
 #     print(cnt[int(r) + 1] - cnt[int(l)])
 
-
+# 123
 # 100점
 import sys
 input = sys.stdin. readline
