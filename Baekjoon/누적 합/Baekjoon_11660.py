@@ -54,16 +54,12 @@ input = sys.stdin.readline
 
 n, m = map(int, input().split())
 arr = [list(map(int, input().split())) for i in range(n)]
-res = []
-sum = 0
+res = [list(0 for _ in range(n + 1)) for _ in range(n + 1)]
 
-for i in range(n):
-    for j in range(n):
-        sum += arr[i][j]
-        res.append(sum)
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        res[i][j] = arr[i - 1][j - 1] + res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1]
 
 for i in range(m):
-    x1, y1, x2, y2 = list(map(int, input().split()))
-    if x1 == 1 and y1 == 1: print(res[((x2 - 1) * 4) + y2 - 1])
-    elif x1 == x2 and y1 == y2: print(arr[x1 - 1][y1 - 1])
-    else: print(res[((x2 - 1) * 4) + y2 - 1] - res[((x1 - 1) * 4) + y1 -1])
+    x1, y1, x2, y2 = map(int, input().split())
+    print(res[x2][y2] - res[x2][y1 - 1] - res[x1 - 1][y2] + res[x1 - 1][y1 - 1])
