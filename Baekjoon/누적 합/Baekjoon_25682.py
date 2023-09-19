@@ -67,3 +67,50 @@ BBBBBBBBBBBBBBBWWWWWWWW
 40
 """
 
+import sys
+input = sys.stdin.readline
+
+# n, m, k = map(int, input().split())
+# arr = list(list(input().rstrip()) for _ in range(n))
+# res = []
+
+# for i in range(n - k + 1):
+#     for j in range(m - k + 1):
+#         black, white = 0, 0
+#         for a in range(i, i + k):
+#             for b in range(j, j + k):
+#                 if (a + b) % 2 == 0:
+#                     if arr[a][b] == "B": black += 1
+#                     if arr[a][b] == "W": white += 1
+#                 else:
+#                     if arr[a][b] == "W": black += 1
+#                     if arr[a][b] == "B": white += 1 
+#         res.append(black)
+#         res.append(white)
+
+# print(min(res))
+
+n, m, k = map(int, input().split())
+arr = [list(input().rstrip()) for _ in range(n)]
+res = []
+
+for color in ["B", "W"]:
+    dp = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+
+    for i in range(n):
+        for j in range(m):
+            if (i + j) % 2 == 0:
+                if arr[i][j] == color: val = 1
+                else: val = 0
+            else:
+                if arr[i][j] == color: val = 0
+                else: val = 1
+            dp[i + 1][j + 1] = dp[i + 1][j] + dp[i][j + 1] - dp[i][j] + val
+
+    temp =  4000000
+    for i in range(1, n - k + 2):
+        for j in range(1, m - k + 2):
+            temp = min(temp, dp[i + k - 1][j + k - 1] - dp[i + k - 1][j - 1] - dp[i - 1][j + k - 1] + dp[i - 1][j - 1])
+    res.append(temp)
+            
+print(min(res))
