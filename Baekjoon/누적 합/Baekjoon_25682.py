@@ -70,6 +70,7 @@ BBBBBBBBBBBBBBBWWWWWWWW
 import sys
 input = sys.stdin.readline
 
+# 시간 초과
 # n, m, k = map(int, input().split())
 # arr = list(list(input().rstrip()) for _ in range(n))
 # res = []
@@ -90,6 +91,7 @@ input = sys.stdin.readline
 
 # print(min(res))
 
+# 정답
 n, m, k = map(int, input().split())
 arr = [list(input().rstrip()) for _ in range(n)]
 res = []
