@@ -50,7 +50,6 @@ N개의 자연수 중에서 M개를 고른 수열
 
 # for i in combinations(arr, m): print(*i)
 
-
 import sys
 input = sys.stdin.readline
 
