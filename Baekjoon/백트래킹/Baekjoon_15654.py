@@ -96,5 +96,4 @@ def backtracking():
             tmp.append(i)
             backtracking()
             tmp.pop()
-
 backtracking()
