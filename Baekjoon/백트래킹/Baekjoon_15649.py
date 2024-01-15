@@ -88,7 +88,6 @@ def func(k):  # 현재 k개까지 수를 택했음.
             func(k + 1)  # 다음 수를 정하러 한 단계 더 들어감
             visited[i] = False  # k번째 수를 i로 정한 모든 경우에 대해 다 확인했으니 i를 이제 사용되지 않았다고 명시함.
 
-
 n, m = map(int, input().split())
 arr = [0] * 10
 visited = [False] * 10
