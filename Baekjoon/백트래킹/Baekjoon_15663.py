@@ -44,48 +44,48 @@ N개의 자연수 중에서 M개를 고른 수열
 # input = sys.stdin.readline
 
 # n, m = map(int, input().split())
-# arr = list(map(int, input().split()))
+# arr = sorted(list(map(int, input().split())))
 # visited = [False] * n
 # stack = []
-# res = []
 
 # def backtracking():
 #     if len(stack) == m:
-#         res.append(tuple(stack))
+#         print(*stack)
 #         return
     
+#     tmp = 0
 #     for i in range(n):
-#         if not visited[i]:
+#         if not visited[i] and tmp != arr[i]:
 #             visited[i] = True
 #             stack.append(arr[i])
+#             tmp = arr[i]
 #             backtracking()
 #             visited[i] = False
 #             stack.pop() 
 
 # backtracking()
-# for i in sorted(list(set(res))): print(*i)
 
 import sys
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-arr = sorted(list(map(int, input().split())))
+arr = list(map(int, input().split()))
 visited = [False] * n
 stack = []
+res = []
 
 def backtracking():
     if len(stack) == m:
-        print(*stack)
+        res.append(tuple(stack))
         return
     
-    tmp = 0
     for i in range(n):
-        if not visited[i] and tmp != arr[i]:
+        if not visited[i]:
             visited[i] = True
             stack.append(arr[i])
-            tmp = arr[i]
             backtracking()
             visited[i] = False
             stack.pop() 
 
 backtracking()
+for i in sorted(list(set(res))): print(*i)
