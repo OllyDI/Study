@@ -151,28 +151,61 @@ CCTV의 최대 개수는 8개를 넘지 않는다.
 
 # 나중에 다시
 
-import sys
+import sys, copy
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-arr = list(map(int, input().split()) for _ in range(n))
-
-res = []
-
-def dfs(x, y):
-    dx = [0, 0, 1, -1]
-    dy = [1, -1, 0, 0]
-
-    if arr[x][y] == 1:1
-    elif arr[x][y] == 2:1
-    elif arr[x][y] == 3:1
-    elif arr[x][y] == 4:1
-    elif arr[x][y] == 5:1
-
-    
-
+arr = []
+cctv = []
 
 for i in range(n):
+    maps = list(map(int, input().split()))
+    arr.append(maps)
     for j in range(m):
-        if arr[i][j] != 0 and arr[i][j] != 6:
-            dfs(i, j)
+        if maps[j] in [1, 2, 3, 4, 5]:
+            cctv.append([maps[j], i, j])
+
+mode = [
+    [],
+    [[0], [1], [2], [3]],                           # 1번 CCTV - 상 하 좌 우
+    [[0, 2], [1, 3]],                               # 2번 CCTV - 상하 좌우
+    [[0, 1], [1, 2], [2, 3], [0, 3]],               # 3번 CCTV - 상우, 우하, 하좌, 좌상
+    [[0, 1, 2], [0, 1, 3], [1, 2, 3], [0, 2, 3]],   # 4번 CCTV - 상우하, 우하좌, 하좌상
+    [[0, 1, 2, 3]]
+]
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+
+def fill(arr, mode, x, y):
+    for i in mode:
+        nx = x
+        ny = y
+        while True:
+            nx += dx[i]
+            ny += dy[i]
+
+            if 0 > nx or 0 > ny or n <= nx or m <= ny: break
+            if arr[nx][ny] == 6: break
+            elif arr[nx][ny] == 0: arr[nx][ny] = -1
+
+def dfs(depth, arr):
+    global res
+
+    if len(cctv) == depth:
+        cnt = 0
+        for i in range(n): cnt += arr[i].count(0)
+        res = min(res, cnt)
+        return
+
+    tmp = copy.deepcopy(arr)
+    num, x, y = cctv[depth]
+
+    for i in mode[num]:
+        fill(tmp, i, x, y)
+        dfs(depth + 1, tmp)
+        tmp = copy.deepcopy(arr)
+
+res = 1000000001
+dfs(0, arr)
+print(res)
