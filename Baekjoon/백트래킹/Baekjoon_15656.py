@@ -93,5 +93,4 @@ def backtracking():
         stack.append(i)
         backtracking()
         stack.pop()
-
 backtracking()
