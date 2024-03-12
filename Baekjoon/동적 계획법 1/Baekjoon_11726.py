@@ -25,19 +25,28 @@
 55
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num1 = 1
+# num2 = 2
+# res = 0
+
+# if n == 1: print(num1)
+# elif n == 2: print(num2)
+# else:
+#     for i in range(2, n):
+#         res = num1 + num2
+#         num1 = num2
+#         num2 = res
+#     print(res % 10007)
+
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-num1 = 1
-num2 = 2
-res = 0
+dp = [0, 1, 2]
 
-if n == 1: print(num1)
-elif n == 2: print(num2)
-else:
-    for i in range(2, n):
-        res = num1 + num2
-        num1 = num2
-        num2 = res
-    print(res % 10007)
+for i in range(3, n + 1): dp.append(dp[i - 1] + dp[i - 2])
+print(dp[n] % 10007)

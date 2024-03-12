@@ -29,19 +29,28 @@
 2731
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num1 = 1
+# num2 = 3
+
+# if n == 1: print(num1)
+# elif n == 2: print(num2)
+# else:
+#     res = 0
+#     for i in range(2, n):
+#         res = num2 + (num1 * 2)
+#         num1 = num2
+#         num2 = res
+#     print(res)
+
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-num1 = 1
-num2 = 3
+dp = [0, 1, 3]
 
-if n == 1: print(num1)
-elif n == 2: print(num2)
-else:
-    res = 0
-    for i in range(2, n):
-        res = num2 + (num1 * 2)
-        num1 = num2
-        num2 = res
-    print(res)
+for i in range(3, n + 1): dp.append((dp[i - 2] * 2) + dp[i - 1])
+print(dp[n] % 10007)
