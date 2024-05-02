@@ -47,6 +47,7 @@ M개의 줄에 답을 출력한다. 존재하면 1을, 존재하지 않으면 0�
 #         else: first = mid + 1  
 #     if not check: print(0)
 
+
 import sys
 input = sys.stdin.readline
 
