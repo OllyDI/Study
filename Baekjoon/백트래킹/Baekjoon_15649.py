@@ -64,31 +64,30 @@ N과 M (1)
 4 3 2 1
 """
 
-from itertools import permutations
+# from itertools import permutations
 
-n, m = map(int, input().split())
-arr = [i + 1 for i in range(n)]
-res = list(permutations(arr, m))
+# n, m = map(int, input().split())
+# arr = [i + 1 for i in range(n)]
+# res = list(permutations(arr, m))
 
-for i in res: print(*i)
+# for i in res: print(*i)
 
 
-
-def func(k):  # 현재 k개까지 수를 택했음.
-    if k == m:  # m개를 모두 택했으면
-        for i in range(m):
-            print(arr[i], end=' ')  # arr에 기록해둔 수를 출력
+def func(depth):
+    if depth == m:
+        print(*arr, end=' ')
         print()
         return
+    
+    for i in range(n):
+        if visited[i] == False:
+            arr[depth] = i + 1
+            visited[i] = True
+            func(depth + 1)
+            visited[i] = False
 
-    for i in range(1, n + 1):  # 1부터 n까지의 수에 대해
-        if not visited[i]:  # 아직 i가 사용되지 않았으면
-            arr[k] = i  # k번째 수를 i로 정함
-            visited[i] = True  # i를 사용되었다고 표시
-            func(k + 1)  # 다음 수를 정하러 한 단계 더 들어감
-            visited[i] = False  # k번째 수를 i로 정한 모든 경우에 대해 다 확인했으니 i를 이제 사용되지 않았다고 명시함.
 
 n, m = map(int, input().split())
-arr = [0] * 10
-visited = [False] * 10
+arr = [0] * m
+visited = [False] * n
 func(0)
