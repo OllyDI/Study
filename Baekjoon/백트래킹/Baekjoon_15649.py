@@ -81,13 +81,14 @@ def func(depth):
     
     for i in range(n):
         if visited[i] == False:
-            arr[depth] = i + 1
+            arr.append(i + 1)
             visited[i] = True
             func(depth + 1)
+            arr.pop()
             visited[i] = False
 
 
 n, m = map(int, input().split())
-arr = [0] * m
+arr = []
 visited = [False] * n
 func(0)

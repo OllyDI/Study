@@ -36,27 +36,26 @@ N과 M (2)
 1 2 3 4
 """
 
-from itertools import combinations
+# from itertools import combinations
 
-n, m = map(int, input().split())
-arr = [i + 1 for i in range(n)]
-res = list(combinations(arr, m))
+# n, m = map(int, input().split())
+# arr = [i + 1 for i in range(n)]
+# res = list(combinations(arr, m))
 
-for i in res: print(*i)
-
-
+# for i in res: print(*i)
 
 
-def sol(start):
-    if len(result) == m:
-        print(*result)
+def func(start):
+    if len(arr) == m:
+        print(*arr, end=' ')
+        print()
         return
-
-    for i in range(start, n + 1):
-        result.append(i)
-        sol(i + 1)
-        result.pop()
+    
+    for i in range(start, n):
+        arr.append(i + 1)
+        func(i + 1)
+        arr.pop()
 
 n, m = map(int, input().split())
-result = []
-sol(1)
+arr = []
+func(0)
