@@ -33,14 +33,17 @@ N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으�
 497
 """
 
+import sys
+input = sys.stdin.readline
+
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
-ans = 0
+res = 0
 
 for i in range(n):
     for j in range(i + 1, n):
         for k in range(j + 1, n):
-            if arr[i] + arr[j] + arr[k] <= m and (arr[i] + arr[j] + arr[k]) > ans: ans = arr[i] + arr[j] + arr[k]
-            else: continue
+            sum = arr[i] + arr[j] + arr[k]
+            if sum <=m and res < sum: res = sum
 
-print(ans)
+print(res)
