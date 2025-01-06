@@ -62,15 +62,26 @@ n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자�
 #     if i != 0: print(i)
 
 
-INDEX_SIZE = 10001
+# INDEX_SIZE = 10001
 
-arr = [i for i in range(1, INDEX_SIZE)]
-narr = set()
+# arr = [i for i in range(1, INDEX_SIZE)]
+# narr = set()
 
-for i in range(1, INDEX_SIZE):
-    num = i + sum([int(j) for j in str(i)])
-    if num < INDEX_SIZE: narr.add(num)
+# for i in range(1, INDEX_SIZE):
+#     num = i + sum([int(j) for j in str(i)])
+#     if num < INDEX_SIZE: narr.add(num)
 
-arr = list(set(arr) - narr)
-arr.sort()
-for i in arr: print(i)
+# arr = list(set(arr) - narr)
+# arr.sort()
+# for i in arr: print(i)
+
+
+arr = [i for i in range(1, 10001)]
+res = set()
+
+for i in range(1, 10001):
+    tmp = i + sum([int(num) for num in str(i)])
+    if (tmp < 10001): res.add(tmp)
+
+arr = sorted(list(set(arr) - res))
+print(*arr, sep='\n')
