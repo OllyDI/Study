@@ -61,6 +61,9 @@ i(2 ≤ i ≤ N-1)번 집의 색은 i-1번, i+1번 집의 색과 같지 않아�
 253
 """
 
+import sys
+input = sys.stdin.readline
+
 n = int(input())
 rgb = [list(map(int, input().split())) for _ in range(n)]
 
