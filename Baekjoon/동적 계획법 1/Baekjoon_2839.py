@@ -45,14 +45,19 @@
 
 # while n > 0:
 #     if n % 5 == 0:
-#         res = n // 5
+#         res += n // 5
 #         break
 #     n -= 3
 #     res += 1
-#     if n < 0: res = -1
+    
+#     if n < 0:
+#         res = -1
+#         break
 
 # print(res)
 
+
+# 복습
 
 import sys
 input = sys.stdin.readline
@@ -64,11 +69,10 @@ while n > 0:
     if n % 5 == 0:
         res += n // 5
         break
+
     n -= 3
     res += 1
-    
-    if n < 0:
-        res = -1
-        break
+
+    if n < 0: res = -1
 
 print(res)
