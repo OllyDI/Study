@@ -35,28 +35,28 @@
 # input = sys.stdin.readline
 
 # t = int(input())
+# arr = [int(input()) for _ in range(t)]
 
-# for i in range(t):
-#     caseNum = int(input())
-#     dp = [0, 1, 2, 4]
+# num = max(arr)
+# dp = [0] * (num + 1)
+# dp[1], dp[2], dp[3] = 1, 2, 4
 
-#     if caseNum < 4: print(dp[caseNum])
-#     else:
-#         for i in range(4, caseNum + 1):
-#             dp.append(dp[i - 1] + dp[i - 2] + dp[i - 3])
-#         print(dp[caseNum])
+# for i in range(4, num + 1):
+#     dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
+
+# for i in arr: print(dp[i])
+
+# 복습
 
 import sys
 input = sys.stdin.readline
 
 t = int(input())
-arr = [int(input()) for _ in range(t)]
+n = [int(input()) for _ in range(t)]
 
-num = max(arr)
-dp = [0] * (num + 1)
-dp[1], dp[2], dp[3] = 1, 2, 4
+dp = [0, 1, 2, 4]
 
-for i in range(4, num + 1):
-    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
+for i in range(4, max(n) + 1):
+    dp.append(dp[i - 1] + dp[i - 2] + dp[i - 3])
 
-for i in arr: print(dp[i])
+for i in n: print(dp[i])
