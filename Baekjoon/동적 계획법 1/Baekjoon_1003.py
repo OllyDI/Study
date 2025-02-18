@@ -53,6 +53,26 @@ fibonacci(3)은 fibonacci(2)와 fibonacci(1)의 결과를 얻고, 2를 리턴한
 10946 17711
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# t = int(input())
+
+# for i in range(t):
+#     n = int(input())
+#     zero, one = 1, 0
+
+#     for j in range(n): zero, one = one, zero + one
+#     print(zero, one)
+
+# 복습 - 점화식 또는 피보나치를 풀어서 보면 이해할 수 있음
+# n = 2 1 / 1
+# n = 3 1 / 2
+# n = 4 2 / 3
+# n = 5 3 / 5
+# n = 6 5 / 8
+# z = b, o = a + b 임을 알 수 있음
+
 import sys
 input = sys.stdin.readline
 
@@ -60,7 +80,7 @@ t = int(input())
 
 for i in range(t):
     n = int(input())
-    zero, one = 1, 0
-
-    for j in range(n): zero, one = one, zero + one
-    print(zero, one)
+    z, o = 1, 0
+    
+    for j in range(n): z, o = o, z + o
+    print(z, o)
