@@ -44,13 +44,31 @@
 75
 """
 
+# n = int(input())
+# arr = [int(input()) for i in range(n)]
+# res = [0] * n
+
+# if n <= 2: print(sum(arr))
+# else:
+#     res[0], res[1] = arr[0], arr[0] + arr[1]
+
+#     for i in range(2, n): res[i] = max(res[i - 3] + arr[i - 1] + arr[i], res[i - 2] + arr[i])
+#     print(res[-1])
+
+# 복습
+
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-arr = [int(input()) for i in range(n)]
-res = [0] * n
+arr = [int(input()) for _ in range(n)]
+dp = [0] * n
 
-if n <= 2: print(sum(arr))
+if n <= 2: print(sum(arr))  # 계단의 최소 조건이 정해져 있지 않아 조건 설정 필요
 else:
-    res[0], res[1] = arr[0], arr[0] + arr[1]
+    dp[0], dp[1] = arr[0], arr[0] + arr[1]  # 첫 번째 계단과 두 번째 계단은 고정 -> 처음을 밟고 그 다음인 두 번째 계단도 반드시 밟아야 하기 때문
 
-    for i in range(2, n): res[i] = max(res[i - 3] + arr[i - 1] + arr[i], res[i - 2] + arr[i])
-    print(res[-1])
+    for i in range(2, n):
+        dp[i] = max(dp[i - 3] + arr[i - 1] + arr[i], dp[i - 2] + arr[i])    # 3칸 밟는게 큰지 두칸 밟는게 큰지
+    
+    print(dp[n - 1])
