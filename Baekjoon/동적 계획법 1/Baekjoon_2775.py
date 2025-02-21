@@ -28,15 +28,33 @@
 10
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# t = int(input())
+# for i in range(t):
+#     f = int(input())
+#     n = int(input())
+#     arr = [num for num in range(1, n + 1)]
+
+#     for j in range(f):
+#         for k in range(1, n): arr[k] += arr[k - 1]
+#     print(arr[n - 1])
+
+# 복습
+
 import sys
 input = sys.stdin.readline
 
-t = int(input())
-for i in range(t):
-    f = int(input())
-    n = int(input())
-    arr = [num for num in range(1, n + 1)]
+T = int(input())
 
-    for j in range(f):
-        for k in range(1, n): arr[k] += arr[k - 1]
-    print(arr[n - 1])
+for i in range(T):
+    k = int(input())
+    n = int(input())
+
+    li = [i + 1 for i in range(n)]
+
+    for j in range(k):
+        for k in range(1, n):
+            li[k] = li[k] + li[k - 1]
+    print(li[n - 1])
