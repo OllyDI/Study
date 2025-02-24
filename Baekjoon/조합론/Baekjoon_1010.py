@@ -28,12 +28,35 @@
 67863915
 """
 
-def factorial(num):
-    if num == 0 or num == 1: return 1
-    else: return num * factorial(num - 1)
+# def factorial(num):
+#     if num == 0 or num == 1: return 1
+#     else: return num * factorial(num - 1)
  
+# t = int(input())
+
+# for i in range(t):
+#     n, m = map(int, input().split())
+#     print(int(factorial(m) / (factorial(m - n) * factorial(n))))
+
+# 복습 - dp로 해결하기
+
+import sys
+input = sys.stdin.readline
+
 t = int(input())
 
 for i in range(t):
     n, m = map(int, input().split())
-    print(int(factorial(m) / (factorial(m - n) * factorial(n))))
+    dp = [[1] * (m + 1) for _ in range(m + 1)]
+
+
+    # j == 1 이면 1, 2, 3 ~~ 반복
+    # j == k 면 무조건 1이기 때문에 k는 j + 1부터 반복 -> 그래서 위에서 dp를 1로 초기화
+    # k는 점화식을 풀어보면 (i, j) = (i - 1)(j - 1) + (i)(j - 1)임 이걸 그대로 대입
+
+    for j in range(1, n + 1):
+        for k in range(j + 1, m + 1):
+            if j == 1: dp[j][k] = k
+            else: dp[j][k] = dp[j - 1][k - 1] + dp[j][k - 1]
+
+    print(dp[n][m])
