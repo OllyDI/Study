@@ -24,13 +24,30 @@ N이 주어졌을 때, P(N)을 구하는 프로그램을 작성하시오.
 16
 """
 
+# t = int(input())
+
+# for i in range(t):
+#     n = int(input())
+#     ans = [0, 1, 1]
+
+#     if n < 3: print(ans[n])
+#     else:
+#         for i in range(3, n + 1): ans.append(ans[i - 2] + ans[i - 3])
+#         print(ans[n])
+
+
+# 복습 - DP
+# 점화식만 알면 매우 쉽게 풀 수 있는 문제
+# 점화식 dp[n] = dp[n - 2] + dp[n - 3]
+
+import sys
+input = sys.stdin.readline
+
 t = int(input())
 
-for i in range(t):
-    n = int(input())
-    ans = [0, 1, 1]
+n = [int(input()) for _ in range(t)]
+dp = [1, 1, 1]
+for i in range(3, max(n)):
+    dp.append(dp[i - 2] + dp[i - 3])
 
-    if n < 3: print(ans[n])
-    else:
-        for i in range(3, n + 1): ans.append(ans[i - 2] + ans[i - 3])
-        print(ans[n])
+for i in n: print(dp[i - 1])
