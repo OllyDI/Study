@@ -61,6 +61,23 @@ i(2 ≤ i ≤ N-1)번 집의 색은 i-1번, i+1번 집의 색과 같지 않아�
 253
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# rgb = [list(map(int, input().split())) for _ in range(n)]
+
+# for i in range(1, n):
+#     rgb[i][0] += min(rgb[i - 1][1], rgb[i - 1][2])
+#     rgb[i][1] += min(rgb[i - 1][0], rgb[i - 1][2])
+#     rgb[i][2] += min(rgb[i - 1][0], rgb[i - 1][1])
+# print(min(rgb[n - 1]))
+
+
+# 복습 - DP
+# https://velog.io/@hope1213/%EB%B0%B1%EC%A4%80-1149-RGB%EA%B1%B0%EB%A6%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC
+# 0 < i rgb[i][0]은 rgb[i - 1][1] rgb[i - 1][2] 중 가장 작은 값을 찾아 더해주면 됨 이를 n까지 반복
+
 import sys
 input = sys.stdin.readline
 
