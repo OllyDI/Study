@@ -22,12 +22,30 @@
 4
 """
 
-n = int(input())
-arr = list(map(int, input().split()))
-dp = [1] * n
+# n = int(input())
+# arr = list(map(int, input().split()))
+# dp = [1] * n
 
-for i in range(1, n):
+# for i in range(1, n):
+#     for j in range(i):
+#         if arr[i] > arr[j]: 
+#             dp[i] = max(dp[i], dp[j] + 1)
+# print(max(dp))
+
+
+# 복습 - DP
+# 점화식 이해 필요 - i = 1 ~ n / 0 부터 i - 1번째 수를 비교해서 li[i]가 li[j]보다 크면 부분수열 가능 -> dp = dp[i]와 dp[j] + 1 중 큰 수를 삽입
+
+import sys
+input = sys.stdin.readline
+
+a = int(input())
+li = list(map(int, input().split()))
+dp = [1] * a
+
+for i in range(1, a):
     for j in range(i):
-        if arr[i] > arr[j]: 
+        if li[i] > li[j]:
             dp[i] = max(dp[i], dp[j] + 1)
+
 print(max(dp))
