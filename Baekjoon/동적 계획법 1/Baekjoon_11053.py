@@ -36,6 +36,7 @@
 # 복습 - DP
 # 점화식 이해 필요 - i = 1 ~ n / 0 부터 i - 1번째 수를 비교해서 li[i]가 li[j]보다 크면 부분수열 가능 -> dp = dp[i]와 dp[j] + 1 중 큰 수를 삽입
 
+
 import sys
 input = sys.stdin.readline
 
