@@ -37,3 +37,8 @@ for i in range(1, a):
         if arr[j] < arr[i]: dp[i] = max(dp[i], dp[j] + arr[i])
         else: dp[i] = max(dp[i], arr[i])
 print(max(dp))
+
+# 복습 - DP
+
+import sys
+input = sys.stdin.readline
