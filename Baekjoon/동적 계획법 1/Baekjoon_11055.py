@@ -22,23 +22,35 @@
 113
 """
 
+# import sys
+# input = sys.stdin.readline
+
+# a = int(input())
+# arr = list(map(int, input().split()))
+
+# dp = [0] * a
+# dp[0] = arr[0]
+
+# for i in range(1, a):
+#     res = arr[i]
+#     for j in range(i):
+#         if arr[j] < arr[i]: dp[i] = max(dp[i], dp[j] + arr[i])
+#         else: dp[i] = max(dp[i], arr[i])
+# print(max(dp))
+
+# 복습 - DP 백준 11053과 유사문제 -> 함정이 있음 li[i] > li[j]가 False일 경우 dp[i]에 dp[i]와 li[i]를 비교하여 큰 수를 대입해 줘야됨
+
 import sys
 input = sys.stdin.readline
 
 a = int(input())
-arr = list(map(int, input().split()))
-
+li = list(map(int, input().split()))
 dp = [0] * a
-dp[0] = arr[0]
+dp[0] = li[0]
 
 for i in range(1, a):
-    res = arr[i]
+    sum = li[i]
     for j in range(i):
-        if arr[j] < arr[i]: dp[i] = max(dp[i], dp[j] + arr[i])
-        else: dp[i] = max(dp[i], arr[i])
+        if li[i] > li[j]: dp[i] = max(dp[i], dp[j] + li[i])
+        else: dp[i] = max(dp[i], li[i])
 print(max(dp))
-
-# 복습 - DP
-
-import sys
-input = sys.stdin.readline
