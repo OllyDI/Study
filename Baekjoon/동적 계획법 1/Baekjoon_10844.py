@@ -36,3 +36,7 @@ for i in range(1, n):
         elif j == 9: arr[i][j] = arr[i - 1][8]
         else: arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j + 1]
 print(sum(arr[n - 1]) % 1000000000)
+
+#복습 - DP
+import sys
+input = sys.stdin.readline
