@@ -25,18 +25,36 @@ N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구해보
 17
 """
 
-n = int(input())
+# n = int(input())
 
-arr = [[0] * 10 for _ in range(n)]
-for i in range(1, 10): arr[0][i] = 1
+# arr = [[0] * 10 for _ in range(n)]
+# for i in range(1, 10): arr[0][i] = 1
+
+# for i in range(1, n):
+#     for j in range(10):
+#         if j == 0: arr[i][j] = arr[i - 1][1]
+#         elif j == 9: arr[i][j] = arr[i - 1][8]
+#         else: arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j + 1]
+# print(sum(arr[n - 1]) % 1000000000)
+
+
+#복습 - DP -> 문제 이해 안됨 나중에 다시보기
+# https://www.youtube.com/watch?v=SPVOKqMDerQ
+# 3월 18일 -> n 는 (n - 1) + (n + 1) 개수를 더해주면 구할 수 있음
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+li = [[0] * 10 for _ in range(n)]
+for i in range(1, 10): li[0][i] = 1
 
 for i in range(1, n):
     for j in range(10):
-        if j == 0: arr[i][j] = arr[i - 1][1]
-        elif j == 9: arr[i][j] = arr[i - 1][8]
-        else: arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j + 1]
-print(sum(arr[n - 1]) % 1000000000)
-
-#복습 - DP
-import sys
-input = sys.stdin.readline
+        if j == 0:
+            li[i][j] = li[i - 1][j + 1]
+        elif j == 9:
+            li[i][j] = li[i - 1][j - 1]
+        else:
+            li[i][j] = li[i - 1][j - 1] + li[i - 1][j + 1]
+print(sum(li[n - 1]) % 1000000000)
