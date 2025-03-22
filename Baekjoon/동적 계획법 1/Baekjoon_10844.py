@@ -42,6 +42,7 @@ N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구해보
 # https://www.youtube.com/watch?v=SPVOKqMDerQ
 # 3월 18일 -> n 는 (n - 1) + (n + 1) 개수를 더해주면 구할 수 있음
 
+
 import sys
 input = sys.stdin.readline
 
