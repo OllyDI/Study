@@ -38,12 +38,41 @@ fibonacci(n) {
 832040 28
 """
 
-def fib(n):
-  for i in range(2, n): 
-    arr.append(arr[i - 1] + arr[i - 2])
-  return arr[i]
+# def fib(n):
+#   for i in range(2, n): 
+#     arr.append(arr[i - 1] + arr[i - 2])
+#   return arr[i]
+
+# n = int(input())
+# arr = [1, 1]
+
+# print(fib(n), n - 2)
+
+
+# 복습 - DP
+import sys
+input = sys.stdin.readline
+
+def fib1(n):
+  global f1
+
+  if n == 1 or n == 2: 
+    f1 += 1
+    return 1
+  else: return fib1(n - 1) + fib1(n - 2)
+
+def fib2(n):
+  global f2
+
+  for i in range(2, n):
+    li.append(li[i - 1] + li[i - 2])
+    f2 += 1
+  return li[i]
 
 n = int(input())
-arr = [1, 1]
+li = [1, 1]
+f1, f2 = 0, 0
+fib1(n)
+fib2(n)
 
-print(fib(n), n - 2)
+print(f1, f2)
