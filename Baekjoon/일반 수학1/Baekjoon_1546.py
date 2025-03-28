@@ -71,6 +71,8 @@
 
 # print(sum(li) / len(li))
 
+
+# 전체 더해서 나눠도 상관X
 import sys
 input = sys.stdin.readline
 
