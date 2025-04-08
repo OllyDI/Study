@@ -16,6 +16,8 @@
 예제 출력 1 
 18446744073709551615
 """
+import sys
+input = sys.stdin.readline
 
 a, b = map(int, input().split(" "))
 print(a+b)
