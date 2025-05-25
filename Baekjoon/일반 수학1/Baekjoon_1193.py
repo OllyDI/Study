@@ -63,6 +63,10 @@ X가 주어졌을 때, X번째 분수를 구하는 프로그램을 작성하시�
 2/4
 """
 
+import sys
+input = sys.stdin.readline
+
+
 x = int(input())
 line = 1
 
