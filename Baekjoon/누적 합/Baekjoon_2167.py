@@ -39,3 +39,4 @@ k = int(input())
 for i in range(k):
     i, j, x, y = map(int, input().split())
     print(dp[x][y] - dp[x][j - 1] - dp[i - 1][y] + dp[i - 1][j - 1])
+    
